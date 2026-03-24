@@ -12,6 +12,9 @@ try {
         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
         PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
     ]);
+    
+    $sql = file_get_contents(__DIR__ . '/../db.sql');
+    $pdo->exec($sql);
 } catch (PDOException $e) {
     http_response_code(500);
     echo '<h1>Erreur de connexion à la base de données</h1>';
