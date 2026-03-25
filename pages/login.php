@@ -26,16 +26,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 }
+
+require_once __DIR__ . '/../elements/head.php';
+head('login');
 ?>
 
 <?php if ($error): ?>
-    <p style="color:red;"> <?= htmlspecialchars($error, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?> </p>
+    <div>
+        <p style="color:red;"> <?= htmlspecialchars($error, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?> </p>
+    </div>
 <?php endif; ?>
 
-<form method="POST">
-    <input type="text" name="username" value="<?= htmlspecialchars($username, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?>" placeholder="nom d'utilisateur" required>
-    <input type="password" name="password" placeholder="mot de passe" required>
-    <button type="submit">SE CONNECTER</button>
-</form>
+<body>
+    <form method="POST">
+        <input type="text" name="username" value="<?= htmlspecialchars($username, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?>" placeholder="nom d'utilisateur" required>
+        <input type="password" name="password" placeholder="mot de passe" required>
+        <button type="submit">SE CONNECTER</button>
+    </form>
 
-<a href="./signin.php">PAS ENCORE DE COMPTE ?</a>
+    <a href="./signin.php">PAS ENCORE DE COMPTE ?</a>
+</body>

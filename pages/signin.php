@@ -28,14 +28,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 }
+
+require_once __DIR__ . '/../elements/head.php';
+head('signin');
 ?>
 
 <?php if ($error): ?>
-    <p style="color:red;"> <?= htmlspecialchars($error, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?> </p>
+    <div>
+        <p style="color:red;"> <?= htmlspecialchars($error, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?> </p>
+    </div>
 <?php endif; ?>
 
-<form method="POST">
-    <input type="text" name="username" value="<?= htmlspecialchars($username ?? '', ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?>" required>
-    <input type="password" name="password" required>
-    <button type="submit">Créer un compte</button>
-</form>
+<body>
+    <form method="POST">
+        <input type="text" name="username" value="<?= htmlspecialchars($username ?? '', ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?>" required>
+        <input type="password" name="password" required>
+        <button type="submit">Créer un compte</button>
+    </form>
+</body>
