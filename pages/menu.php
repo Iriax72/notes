@@ -1,6 +1,8 @@
 <?php
 session_start();
 
+require_once '../elements/createPDO.php';
+
 function error(string $error) {
     echo "<div>Une erreur est survenue: $error</div>";
     exit();
@@ -11,9 +13,8 @@ if (!isset($_SESSION['user_id'])) {
     exit();
 }
 
-if ($_POST['newSubject']) {
+if (isset($_POST['newSubject'])) {
     try {
-        require_once __DIR__ . './../elements/createPDO.php';
         $sql = 'INSERT INTO subjects (subject_name) VALUES (?)';
         $stmt = $pdo->prepare($stmt);
         $stmt->execute([$_POST['newSubject']]);
@@ -26,7 +27,6 @@ require_once __DIR__ . '/../elements/head.php';
 head("menu", '../css/menu.css');
 
 try {
-    require_once __DIR__ . '/../elements/createPDO.php';
     $sql = 'SELECT * FROM enrollements WHERE user_id = ?';
     $stmt = $pdo->prepare($sql);
     $stmt->execute([$_SESSION['user_id']]);
