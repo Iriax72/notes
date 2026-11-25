@@ -14,6 +14,11 @@ if (!isset($_SESSION['user_id'])) {
 }
 $user_id = $_SESSION['user_id'];
 
+$sql = 'SELECT userName FROM users WHERE id = (?)';
+$stmt = $pdo->prepare($sql);
+$stmt->execute([$user_id]);
+$user_name = (string) $stmt->fetch();
+
 if (isset($_POST['newSubject'])) {
     try {
         $sql = 'INSERT INTO subjects (subject_name) VALUES (?)';
@@ -42,13 +47,12 @@ try {
     error($error);
 }
 ?>
-
 <body>
     <header>
         <h1>App Note</h1>
     </header>
     <main>
-        <p>Bienvenue dans le menu, vous etes en tant que <?php echo htmlspecialchars((string)($_SESSION['user_id'] ?? ''), ENT_QUOTES | ENT_HTML5, 'UTF-8'); ?></p>
+        <p>Bienvenue dans le menu, vous etes en tant que <?php echo htmlspecialchars($user_name), ENT_QUOTES | ENT_HTML5, 'UTF-8'); ?></p>
         <form method="post">
             <input type="text" name="newSubject" placeholder="une nouvelle matière ?">
             <button type="submit">Enregistrer</button>
