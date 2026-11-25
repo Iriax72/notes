@@ -17,7 +17,7 @@ $user_id = $_SESSION['user_id'];
 $sql = 'SELECT userName FROM users WHERE id = (?)';
 $stmt = $pdo->prepare($sql);
 $stmt->execute([$user_id]);
-$user_name = (string) $stmt->fetch();
+$user_name = (string) $stmt->fetchColumn();
 
 if (isset($_POST['newSubject'])) {
     try {
