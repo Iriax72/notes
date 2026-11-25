@@ -20,10 +20,10 @@ if (isset($_POST['newSubject'])) {
         $stmt = $pdo->prepare($sql);
         $stmt->execute([$_POST['newSubject']]);
 
-        $sql = 'SELECT id FROM subjects WHERE subject_name = (?)';
+        $sql = 'SELECT id FROM subjects WHERE subject_name = (?) ORDER BY id DESC LIMIT 1';
         $stmt = $pdo->prepare($sql);
         $stmt->execute([$_POST['newSubject']]);
-        $subject_id = $stmt->fetch();
+        $subject_id = (int) $stmt->fetchColumn();
 
         $sql = 'INSERT INTO enrollements (user_id, subject_id) VALUES (?, ?)';
         $stmt = $pdo->prepare($sql);
