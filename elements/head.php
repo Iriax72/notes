@@ -6,8 +6,8 @@ function head(string $title, string $css_path): void {
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>$safeTitle</title>
-        <link rel="stylesheet" htef="../css/main.css">
-        <link rel="stylesheet" htef="$css_path">
+        <link rel="stylesheet" href="../css/main.css">
+        <link rel="stylesheet" href="$css_path">
     </head>
 HTML;
 }
