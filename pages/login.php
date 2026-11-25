@@ -41,8 +41,8 @@ head('login', '../css/login.css');
     <form method="POST">
         <input type="text" name="username" value="<?= htmlspecialchars($username, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?>" placeholder="nom d'utilisateur" required>
         <input type="password" name="password" placeholder="mot de passe" required>
-        <button type="submit">SE CONNECTER</button>
+        <button class="btn" type="submit">SE CONNECTER</button>
     </form>
 
-    <a href="./signin.php">PAS ENCORE DE COMPTE ?</a>
+    <a class="btn" href="./signin.php">PAS ENCORE DE COMPTE ?</a>
 </body>
