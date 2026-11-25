@@ -3,7 +3,7 @@ session_start();
 
 require_once __DIR__ . '/../elements/head.php';
 $pageName = filter_input(INPUT_GET, 'subject', FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?? 'inconnu';
-head($pageName);
+head($pageName, '../css/subject.css');
 ?>
 
 <body>

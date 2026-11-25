@@ -23,7 +23,7 @@ if ($_POST['newSubject']) {
 }
 
 require_once __DIR__ . '/../elements/head.php';
-head("menu");
+head("menu", '../css/menu.css');
 
 try {
     require_once __DIR__ . '/../elements/createPDO.php';
