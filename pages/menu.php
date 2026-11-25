@@ -8,6 +8,10 @@ function error(string $error) {
     exit();
 }
 
+function safeText(string $t) {
+    return htmlspecialchars($t, ENT_QUOTES | ENT_HTML5, 'UTF-8');
+}
+
 if (!isset($_SESSION['user_id'])) {
     header("Location: login.php");
     exit();
@@ -53,6 +57,7 @@ try {
     </header>
     <main class="container">
         <p>Bienvenue dans le menu, vous etes en tant que <?php echo htmlspecialchars($user_name, ENT_QUOTES | ENT_HTML5, 'UTF-8'); ?></p>
+        <p>Moyenne G: TODO</p>
         <form method="post">
             <input class="input" type="text" name="newSubject" placeholder="une nouvelle matière ?">
             <button class="btn" type="submit">Enregistrer</button>
@@ -61,9 +66,8 @@ try {
             <p>Vous n'êtes pour l'instant inscrit à aucun cours</p>
         <?php else: ?>
             <?php foreach($enrollements as $enrollement): ?>
-                <?php $safeEnrollement = htmlspecialchars((string) $enrollement['subject_name'], ENT_QUOTES | ENT_HTML5, 'UTF-8'); ?>
-                <a href="<?='./subject.php?subject='$safeEnrollement?>">
-                    <span><?=$safeEnrollement?></span>
+                <a href="./subject.php?subject=<?=safeText((string) $enrollement['subject_name'])?>">
+                    <span><?=safeText((string) $enrollement['subject_name'])?></span>
                 </a>
             <?php endforeach; ?>
         <?php endif; ?>
