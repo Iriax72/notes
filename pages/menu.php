@@ -60,10 +60,12 @@ try {
         <?php if (empty($enrollements)): ?>
             <p>Vous n'êtes pour l'instant inscrit à aucun cours</p>
         <?php else: ?>
-            <?php foreach($enrollements as $enrollement) {
-                $safeEnrollement = htmlspecialchars((string) $enrollement['subject_name'], ENT_QUOTES | ENT_HTML5, 'UTF-8');
-                echo '<a href="./subject.php?subject=' . $safeEnrollement . '">' . $safeEnrollement . '</a>';
-            };?>
+            <?php foreach($enrollements as $enrollement): ?>
+                <?php $safeEnrollement = htmlspecialchars((string) $enrollement['subject_name'], ENT_QUOTES | ENT_HTML5, 'UTF-8'); ?>
+                <a href="<?='./subject.php?subject='$safeEnrollement?>">
+                    <span><?=$safeEnrollement?></span>
+                </a>
+            <?php endforeach; ?>
         <?php endif; ?>
     </main>
     <footer>
