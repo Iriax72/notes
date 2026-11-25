@@ -37,7 +37,7 @@ require_once __DIR__ . '/../elements/head.php';
 head("menu", '../css/menu.css');
 
 try {
-    $sql = 'SELECT * FROM enrollements WHERE user_id = ?';
+    $sql = 'SELECT user_id, subject_name FROM enrollements WHERE user_id = ? JOIN subjects ON enrollements.subject_id = subjects.id';
     $stmt = $pdo->prepare($sql);
     $stmt->execute([$_SESSION['user_id']]);
     $enrollements = $stmt->fetch();
