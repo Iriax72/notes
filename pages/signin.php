@@ -45,5 +45,5 @@ head('signin', '../css/account.css');
         <input type="password" name="password" required>
         <button class="btn" type="submit">Créer un compte</button>
     </form>
-    <a class="btn" htef="./login.php">J'ai déjà un compte</a>
+    <a class="btn" href="./login.php">J'ai déjà un compte</a>
 </body>
