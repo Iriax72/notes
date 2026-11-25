@@ -39,10 +39,10 @@ head('signin', '../css/account.css');
     </div>
 <?php endif; ?>
 
-<body>
-    <form method="POST">
-        <input type="text" name="username" value="<?= htmlspecialchars($username ?? '', ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?>" required>
-        <input type="password" name="password" required>
+<body class="container">
+    <form method="POST" class="form container">
+        <input class="input" type="text" name="username" value="<?= htmlspecialchars($username ?? '', ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?>" required>
+        <input class="input" type="password" name="password" required>
         <button class="btn" type="submit">Créer un compte</button>
     </form>
     <a class="btn" href="./login.php">J'ai déjà un compte</a>

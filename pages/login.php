@@ -37,10 +37,10 @@ head('login', '../css/account.css');
     </div>
 <?php endif; ?>
 
-<body>
-    <form method="POST">
-        <input type="text" name="username" value="<?= htmlspecialchars($username, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?>" placeholder="nom d'utilisateur" required>
-        <input type="password" name="password" placeholder="mot de passe" required>
+<body class="container">
+    <form method="POST" class="form container">
+        <input class="input" type="text" name="username" value="<?= htmlspecialchars($username, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?>" placeholder="nom d'utilisateur" required>
+        <input class="input" type="password" name="password" placeholder="mot de passe" required>
         <button class="btn" type="submit">SE CONNECTER</button>
     </form>
 

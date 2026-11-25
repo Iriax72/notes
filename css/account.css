@@ -1,24 +1,18 @@
-body {
+/*body {
     background-color: var(--dark-grey);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
-}
+}*/
 
 form {
     width: 85vw;
     height: 60vh;
-    border-radius: 20px;
-    border: 4px solid var(--light-grey);
-    background-color: var(--medium-grey);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
 }
 
-form input {
+/*
+input {
     background-color: var(--light-grey);
     border-radius: 6px;
     color: var(--light-grey)
@@ -32,3 +26,4 @@ form input {
     text-decoration: none;
     text-align: center;
 }
+*/

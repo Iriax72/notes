@@ -8,9 +8,9 @@ head($pageName, '../css/subject.css');
 
 <body>
     <header></header>
-    <main>
+    <main class="container">
         <p>Vous êtes sur votre cour de <?php echo htmlspecialchars($pageName, ENT_QUOTES | ENT_HTML5, 'UTF-8'); ?></p>
-        <a href="./menu.php">retour au menu</a>
+        <a class="btn" href="./menu.php">retour au menu</a>
     </main>
     <footer></footer>
 </body>
