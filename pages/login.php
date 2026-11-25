@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 require_once __DIR__ . '/../elements/head.php';
-head('login', '../css/login.css');
+head('login', '../css/account.css');
 ?>
 
 <?php if ($error): ?>
