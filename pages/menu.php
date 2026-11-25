@@ -37,7 +37,7 @@ require_once __DIR__ . '/../elements/head.php';
 head("menu", '../css/menu.css');
 
 try {
-    $sql = 'SELECT user_id, subject_name FROM enrollements JOIN subjects ON enrollements.subject_id = subjects.id WHERE user_id = ?';
+    $sql = 'SELECT subject_name FROM enrollements JOIN subjects ON enrollements.subject_id = subjects.id WHERE user_id = ?';
     $stmt = $pdo->prepare($sql);
     $stmt->execute([$_SESSION['user_id']]);
     $enrollements = $stmt->fetch();
@@ -59,7 +59,7 @@ try {
         <?php if (!$enrollements): ?>
             <p>Vous n'êtes pour l'instant inscrit à aucun cours</p>
         <?php else: ?>
-            <?php foreach($enrollements as $user_id => $enrollement) {
+            <?php foreach($enrollements as $enrollement) {
                 $safeEnrollement = htmlspecialchars((string) $enrollement, ENT_QUOTES | ENT_HTML5, 'UTF-8');
                 echo '<a href="./subject.php?subject=' . $safeEnrollement . '">' . $safeEnrollement . '</a>';
             };?>
