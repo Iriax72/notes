@@ -52,7 +52,7 @@ try {
         <h1>App Note</h1>
     </header>
     <main>
-        <p>Bienvenue dans le menu, vous etes en tant que <?php echo htmlspecialchars($user_name), ENT_QUOTES | ENT_HTML5, 'UTF-8'); ?></p>
+        <p>Bienvenue dans le menu, vous etes en tant que <?php echo htmlspecialchars($user_name, ENT_QUOTES | ENT_HTML5, 'UTF-8'); ?></p>
         <form method="post">
             <input type="text" name="newSubject" placeholder="une nouvelle matière ?">
             <button type="submit">Enregistrer</button>
