@@ -6,7 +6,7 @@ CREATE TABLE IF NOT EXISTS users (
 
 CREATE TABLE IF NOT EXISTS subjects (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    subject_name VARCHAR(50) UNIQUE
+    subject_name VARCHAR(50)
 );
 
 CREATE TABLE IF NOT EXISTS grades (
