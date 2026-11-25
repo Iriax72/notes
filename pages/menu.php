@@ -16,7 +16,7 @@ if (!isset($_SESSION['user_id'])) {
 if (isset($_POST['newSubject'])) {
     try {
         $sql = 'INSERT INTO subjects (subject_name) VALUES (?)';
-        $stmt = $pdo->prepare($stmt);
+        $stmt = $pdo->prepare($sql);
         $stmt->execute([$_POST['newSubject']]);
     } catch (PDOException $error) {
         error($error);
