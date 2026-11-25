@@ -1,26 +1,39 @@
 <?php
 session_start();
 
+function error(string $error) {
+    echo "<div>Une erreur est survenue: $error</div>";
+    exit();
+}
+
 if (!isset($_SESSION['user_id'])) {
     header("Location: login.php");
     exit();
 }
 
 if ($_POST['newSubject']) {
-    require_once __DIR__ . './../elements/createPDO.php';
-    $sql = 'INSERT INTO subjects (subject_name) VALUES (?)';
-    $stmt = $pdo->prepare($stmt);
-    $stmt->execute([$_POST['newSubject']]);
+    try {
+        require_once __DIR__ . './../elements/createPDO.php';
+        $sql = 'INSERT INTO subjects (subject_name) VALUES (?)';
+        $stmt = $pdo->prepare($stmt);
+        $stmt->execute([$_POST['newSubject']]);
+    } catch ($error) {
+        error($error);
+    }
 }
 
 require_once __DIR__ . '/../elements/head.php';
 head("menu");
 
-require_once __DIR__ . '/../elements/createPDO.php';
-$sql = 'SELECT * FROM enrollements WHERE user_id = ?';
-$stmt = $pdo->prepare($sql);
-$stmt->execute([$_SESSION['user_id']]);
-$enrollements = $stmt->fetch();
+try {
+    require_once __DIR__ . '/../elements/createPDO.php';
+    $sql = 'SELECT * FROM enrollements WHERE user_id = ?';
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([$_SESSION['user_id']]);
+    $enrollements = $stmt->fetch();
+} catch ($error) {
+    error($error);
+}
 ?>
 
 <body>
