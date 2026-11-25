@@ -12,12 +12,22 @@ if (!isset($_SESSION['user_id'])) {
     header("Location: login.php");
     exit();
 }
+$user_id = $_SESSION['user_id'];
 
 if (isset($_POST['newSubject'])) {
     try {
         $sql = 'INSERT INTO subjects (subject_name) VALUES (?)';
         $stmt = $pdo->prepare($sql);
         $stmt->execute([$_POST['newSubject']]);
+
+        $sql = 'SELECT id FROM subjects WHERE subject_name = (?)';
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$_POST['newSubject']]);
+        $subject_id = $stmt->fetch();
+
+        $sql = 'INSERT INTO enrollements (user_id, subject_id) VALUES (?, ?)';
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$user_id, $subject_id]);
     } catch (PDOException $error) {
         error($error);
     }
