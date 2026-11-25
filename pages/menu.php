@@ -18,7 +18,7 @@ if (isset($_POST['newSubject'])) {
         $sql = 'INSERT INTO subjects (subject_name) VALUES (?)';
         $stmt = $pdo->prepare($stmt);
         $stmt->execute([$_POST['newSubject']]);
-    } catch ($error) {
+    } catch (PDOException $error) {
         error($error);
     }
 }
@@ -31,7 +31,7 @@ try {
     $stmt = $pdo->prepare($sql);
     $stmt->execute([$_SESSION['user_id']]);
     $enrollements = $stmt->fetch();
-} catch ($error) {
+} catch (PDOException $error) {
     error($error);
 }
 ?>
