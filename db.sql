@@ -13,7 +13,8 @@ CREATE TABLE IF NOT EXISTS grades (
     id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT,
     subject_id INT,
-    grade FLOAT
+    grade FLOAT,
+    coef FLOAT
 );
 
 CREATE TABLE IF NOT EXISTS enrollements (
